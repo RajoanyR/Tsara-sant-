@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-white font-sans text-deep antialiased; font-feature-settings: 'cv11', 'ss01'; text-rendering: optimizeLegibility; }
+  h1, h2, h3, h4 { font-family: 'Manrope', 'Inter', ui-sans-serif, system-ui, sans-serif; text-wrap: balance; }
+  p { text-wrap: pretty; }
+  :focus-visible { outline: 3px solid #167D68; outline-offset: 2px; border-radius: 6px; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-[1200px] px-5 sm:px-8; }
+  .btn-primary, .btn-outline, .btn-light {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold transition-colors;
+  }
+  .btn-primary { @apply bg-brand text-white hover:bg-brand-dark; }
+  .btn-outline { @apply border border-brand bg-white text-brand hover:bg-mint; }
+  .btn-light { @apply bg-white text-brand hover:bg-mint; }
+  .card { @apply rounded-lg border border-line bg-white shadow-soft; }
+  .section-title { font-family: 'Manrope', 'Inter', ui-sans-serif, system-ui, sans-serif; @apply text-[1.65rem] font-extrabold leading-tight tracking-[-0.02em] text-deep sm:text-[2rem]; }
+  .page-title { font-family: 'Manrope', 'Inter', ui-sans-serif, system-ui, sans-serif; @apply text-[2rem] font-extrabold leading-[1.1] tracking-[-0.025em] text-deep sm:text-[2.75rem]; }
+  .hero-title { font-family: 'Manrope', 'Inter', ui-sans-serif, system-ui, sans-serif; @apply text-[2.4rem] font-extrabold leading-[1.08] tracking-[-0.03em] text-deep sm:text-[3.4rem]; }
+  .eyebrow { @apply text-[0.78rem] font-bold uppercase tracking-[0.16em] text-brand; }
+  .input {
+    @apply w-full rounded-md border border-line bg-white px-3.5 py-2.5 text-sm text-deep placeholder:text-slate-400;
+  }
+  .input[aria-invalid='true'] { @apply border-red-600; }
+}
+
+@layer utilities {
+  .font-display { font-family: 'Manrope', 'Inter', ui-sans-serif, system-ui, sans-serif; }
+  @keyframes page-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .page-enter { animation: page-in 0.45s ease-out both; }
+}
+.card { transition: box-shadow 0.2s ease, transform 0.2s ease; }
+.card:hover { box-shadow: 0 8px 22px rgba(25, 53, 47, 0.1); transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) { .page-enter { animation: none; } .card:hover { transform: none; } }
